@@ -1,160 +1,268 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EduHub Web — CLB &amp; sự kiện sinh viên ĐH Đồng Tháp</title>
-    <meta name="description" content="Cổng thông tin câu lạc bộ và sự kiện dành cho sinh viên Trường Đại học Đồng Tháp: xem lịch sự kiện, tìm CLB phù hợp và đăng ký thành viên.">
-    <!-- Open Graph: thay "ten-tai-khoan" bằng tên tài khoản GitHub sau khi bật GitHub Pages -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="EduHub Web">
-    <meta property="og:title" content="EduHub Web — CLB &amp; sự kiện sinh viên ĐH Đồng Tháp">
-    <meta property="og:description" content="Xem lịch sự kiện, tìm câu lạc bộ phù hợp và đăng ký thành viên.">
-    <meta property="og:url" content="https://ten-tai-khoan.github.io/eduhub-web/">
-    <meta property="og:image" content="https://ten-tai-khoan.github.io/eduhub-web/assets/og-image.png">
-    <meta property="og:locale" content="vi_VN">
-    <meta name="theme-color" content="#001D45">
-    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-    <!-- Ch02: một tệp CSS duy nhất, main.css tự @import các lớp còn lại -->
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#noi-dung">Bỏ qua, đến nội dung chính</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOOD HOUSE - Huong Vi Tuyet Voi</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
 
-    <header class="site-header">
-      <div class="container site-header__inner">
-        <a class="brand" href="index.html">
-          <img class="brand__logo" src="assets/logo.svg" alt="" width="48" height="48">
-          <span class="brand__name">Edu<span>Hub</span></span>
-        </a>
-        <nav class="site-nav" aria-label="Điều hướng chính">
-          <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="index.html" aria-current="page">Trang chủ</a></li>
-          <li><a class="site-nav__link" href="events.html">Sự kiện</a></li>
-          <li><a class="site-nav__link" href="index.html#cau-lac-bo">Câu lạc bộ</a></li>
-          <li><a class="site-nav__link" href="register.html">Đăng ký thành viên</a></li>
-          </ul>
-        </nav>
+  <!-- HEADER + NAV -->
+  <header class="header" id="home">
+    <nav class="navbar">
+      <div class="logo">&#127964; <span>FOOD HOUSE</span></div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Mo menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Trang chu</a></li>
+        <li><a href="#menu">Mon an</a></li>
+        <li><a href="#about">Gioi thieu</a></li>
+        <li><a href="#contact">Lien he</a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Tim mon an..." />
+        <button id="searchBtn">Tim</button>
       </div>
-    </header>
+    </nav>
+  </header>
 
-    <main id="noi-dung">
-      <section class="container hero" aria-labelledby="tieu-de-chinh">
-        <div>
-          <p class="hero__eyebrow">Học kỳ I · 2026–2027</p>
-          <h1 id="tieu-de-chinh">EduHub Web — Cổng CLB &amp; sự kiện sinh viên</h1>
-          <p class="hero__lead">
-            Nơi sinh viên Trường Đại học Đồng Tháp tìm câu lạc bộ hợp sở thích,
-            xem lịch sự kiện của cả trường và đăng ký tham gia chỉ trong vài bước.
-          </p>
-          <p class="btn-row">
-            <a class="btn btn--accent" href="events.html">Xem lịch sự kiện</a>
-            <a class="btn btn--ghost" href="register.html">Trở thành thành viên</a>
-          </p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">KHAM PHA HUONG VI TUYET VOI</h1>
+      <p class="hero-subtitle">Nhung mon an ngon - Dam da - Duoc yeu thich</p>
+      <button class="btn btn-hero" id="scrollToMenuBtn">Xem Thuc Don</button>
+    </div>
+  </section>
+
+  <!-- MON AN -->
+  <section id="menu" class="menu-section">
+    <h2 class="section-title">MON AN NOI BAT</h2>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Tat ca</button>
+      <button class="filter-btn" data-filter="viet">Mon Viet</button>
+      <button class="filter-btn" data-filter="han">Mon Han</button>
+      <button class="filter-btn" data-filter="drink">Do uong</button>
+      <button class="filter-btn" data-filter="fast">Mon nhanh</button>
+    </div>
+
+    <div class="food-grid" id="foodGrid">
+
+      <div class="food-card" data-category="viet" data-name="Pho Bo" data-price="45.000d" data-desc="Pho bo truyen thong voi nuoc dung dam da, thit bo tuoi ngon va cac loai rau thom dac trung.">
+        <div class="card-img">
+          <img src="img/Pho.JPG" alt="Phở Bò" />
+          <span class="badge">Bestseller</span>
         </div>
-        <img class="hero__media" src="assets/hero.svg" alt="Minh hoạ ba sinh viên đứng cạnh bảng CLB và bảng Sự kiện" width="1200" height="500">
-      </section>
-
-      <section class="container section" aria-labelledby="su-kien-sap-toi">
-        <div class="section__head">
-          <h2 id="su-kien-sap-toi">Sự kiện sắp tới</h2>
-          <a href="events.html">Xem tất cả sự kiện →</a>
+        <div class="card-body">
+          <h3>Phở Bò</h3>
+          <p class="price">45.000d</p>
+          <span class="category-tag viet">Mon Viet</span>
+          <button class="btn btn-detail">Xem mon</button>
         </div>
-        <div class="card-grid">
-        <article class="card event-card">
-          <img class="card__media" src="assets/club-tin-hoc.svg" alt="Biểu tượng CLB Tin học" width="640" height="360" loading="lazy">
-          <div class="card__body">
-            <p class="card__meta"><span class="tag">CLB Tin học</span> <span class="badge badge--hot">Sắp hết chỗ</span></p>
-            <h3 class="card__title"><a href="event-detail.html">Workshop: Làm website đầu tiên với HTML</a></h3>
-            <p class="event-card__info"><time datetime="2026-10-17T07:30+07:00">07:30, thứ Bảy 17/10/2026</time> · Phòng máy B1.203</p>
-            <p class="card__text">Hai giờ thực hành: viết trang giới thiệu bản thân và đưa lên GitHub Pages.</p>
-            <p class="event-card__seats">Còn 12/60 chỗ</p>
-          </div>
-        </article>
+      </div>
 
-        <article class="card event-card">
-          <img class="card__media" src="assets/club-tinh-nguyen.svg" alt="Biểu tượng CLB Tình nguyện" width="640" height="360" loading="lazy">
-          <div class="card__body">
-            <p class="card__meta"><span class="tag">CLB Tình nguyện</span></p>
-            <h3 class="card__title"><a href="events.html">Ngày hội Hiến máu tình nguyện</a></h3>
-            <p class="event-card__info"><time datetime="2026-10-24T07:00+07:00">07:00, thứ Bảy 24/10/2026</time> · Hội trường lớn</p>
-            <p class="card__text">Mỗi giọt máu cho đi, một cuộc đời ở lại. Có giấy chứng nhận và quà cho người tham gia.</p>
-            <p class="event-card__seats">Còn 140/300 chỗ</p>
-          </div>
-        </article>
-
-        <article class="card event-card">
-          <img class="card__media" src="assets/club-tieng-anh.svg" alt="Biểu tượng CLB Tiếng Anh" width="640" height="360" loading="lazy">
-          <div class="card__body">
-            <p class="card__meta"><span class="tag">CLB Tiếng Anh</span> <span class="badge badge--hot">Sắp hết chỗ</span></p>
-            <h3 class="card__title"><a href="events.html">English Speaking Night: Halloween</a></h3>
-            <p class="event-card__info"><time datetime="2026-10-31T18:30+07:00">18:30, thứ Bảy 31/10/2026</time> · Sảnh nhà A1</p>
-            <p class="card__text">Trò chơi, hoá trang và luyện nói tiếng Anh cùng sinh viên các khoa.</p>
-            <p class="event-card__seats">Còn 6/80 chỗ</p>
-          </div>
-        </article>
+      <div class="food-card" data-category="viet" data-name="Com Tam" data-price="40.000d" data-desc="Com tam suon bi cha thom ngon, an kem nuoc mam chua ngot dac trung mien Nam.">
+        <div class="card-img">
+          <img src="img/ComTam.JPG" alt="Cơm Tấm" />
         </div>
-      </section>
-
-      <section id="cau-lac-bo" class="container section" aria-labelledby="tieu-de-clb">
-        <div class="section__head">
-          <h2 id="tieu-de-clb">Câu lạc bộ</h2>
+        <div class="card-body">
+          <h3>Cơm Tấm</h3>
+          <p class="price">40.000d</p>
+          <span class="category-tag viet">Mon Viet</span>
+          <button class="btn btn-detail">Xem mon</button>
         </div>
-        <ul class="card-grid">
-          <li class="club-card">
-            <h3>CLB Tin học</h3>
-            <p>Học lập trình, làm dự án nhỏ và luyện thi Olympic Tin học sinh viên.</p>
-          </li>
-          <li class="club-card">
-            <h3>CLB Tình nguyện</h3>
-            <p>Hiến máu, Tiếp sức mùa thi, Mùa hè xanh và Xuân tình nguyện.</p>
-          </li>
-          <li class="club-card">
-            <h3>CLB Tiếng Anh</h3>
-            <p>Sinh hoạt English Speaking Club hằng tuần, luyện thi chứng chỉ.</p>
-          </li>
-          <li class="club-card">
-            <h3>CLB Âm nhạc</h3>
-            <p>Guitar, thanh nhạc, biểu diễn trong các đêm văn nghệ của trường.</p>
-          </li>
-          <li class="club-card">
-            <h3>CLB Bóng đá</h3>
-            <p>Tập luyện mỗi chiều thứ Tư, tổ chức giải bóng đá sinh viên hằng năm.</p>
-          </li>
-          <li class="club-card">
-            <h3>CLB Kỹ năng mềm</h3>
-            <p>Thuyết trình, làm việc nhóm, viết CV và chuẩn bị phỏng vấn xin việc.</p>
-          </li>
+      </div>
+
+      <div class="food-card" data-category="viet" data-name="Bun Bo Hue" data-price="50.000d" data-desc="Bun bo Hue cay nong, thom mui sa, nuoc dung dam vi dac trung xu Hue.">
+        <div class="card-img">
+          <img src="img/BunBoHue.JPG" alt="Bún Bò Huế" />
+          <span class="badge badge-hot">Hot</span>
+        </div>
+        <div class="card-body">
+          <h3>Bún Bò Huế</h3>
+          <p class="price">50.000d</p>
+          <span class="category-tag viet">Mon Viet</span>
+          <button class="btn btn-detail">Xem mon</button>
+        </div>
+      </div>
+
+      <div class="food-card" data-category="viet" data-name="Banh Mi Dac Biet" data-price="25.000d" data-desc="Banh mi gion tan, nhan thit nguoi, cha lua, rau thom va tuong ot dac trung.">
+        <div class="card-img">
+          <img src="img/banhmi.JPG" alt="Banh Mi" />
+        </div>
+        <div class="card-body">
+          <h3>Banh Mi Dac Biet</h3>
+          <p class="price">25.000d</p>
+          <span class="category-tag viet">Mon Viet</span>
+          <button class="btn btn-detail">Xem mon</button>
+        </div>
+      </div>
+
+      <div class="food-card" data-category="han" data-name="Tokbokki" data-price="55.000d" data-desc="Banh gao Han Quoc xao sot cay dac trung, dai ngon va hap dan.">
+        <div class="card-img">
+          <img src="img/tokbokki.JPG" alt="Tokbokki" />
+          <span class="badge badge-new">Moi</span>
+        </div>
+        <div class="card-body">
+          <h3>Tokbokki</h3>
+          <p class="price">55.000d</p>
+          <span class="category-tag han">Mon Han</span>
+          <button class="btn btn-detail">Xem mon</button>
+        </div>
+      </div>
+
+      <div class="food-card" data-category="han" data-name="Kimbap" data-price="45.000d" data-desc="Cuon com Han Quoc voi rau cu va thit, cuon trong la rong bien thom ngon.">
+        <div class="card-img">
+          <img src="img/kimbap.JPG" alt="Kimbap" />
+        </div>
+        <div class="card-body">
+          <h3>Kimbap</h3>
+          <p class="price">45.000d</p>
+          <span class="category-tag han">Mon Han</span>
+          <button class="btn btn-detail">Xem mon</button>
+        </div>
+      </div>
+
+      <div class="food-card" data-category="drink" data-name="Tra Sua Tran Chau" data-price="35.000d" data-desc="Tra sua thom ngon voi tran chau deo, co the chon muc duong va da theo y thich.">
+        <div class="card-img">
+          <img src="img/trasua.JPG" alt="Tra Sua" />
+          <span class="badge">Bestseller</span>
+        </div>
+        <div class="card-body">
+          <h3>Tra Sua Tran Chau</h3>
+          <p class="price">35.000d</p>
+          <span class="category-tag drink">Do uong</span>
+          <button class="btn btn-detail">Xem mon</button>
+        </div>
+      </div>
+
+      <div class="food-card" data-category="drink" data-name="Ca Phe Sua Da" data-price="20.000d" data-desc="Ca phe sua da Viet Nam truyen thong, dam da, thom ngon, giai khat hoang hon.">
+        <div class="card-img">
+          <img src="img/cafe.JPG" alt="Ca Phe" />
+        </div>
+        <div class="card-body">
+          <h3>Ca Phe Sua Da</h3>
+          <p class="price">20.000d</p>
+          <span class="category-tag drink">Do uong</span>
+          <button class="btn btn-detail">Xem mon</button>
+        </div>
+      </div>
+
+      <div class="food-card" data-category="fast" data-name="Ga Ran Gion" data-price="60.000d" data-desc="Ga ran gion tan ben ngoai, mem thom ben trong, an cùng vị sốt chua ngọt.">
+        <div class="card-img">
+          <img src="img/garan.JPG" alt="Ga Ran" />
+          <span class="badge badge-hot">Hot</span>
+        </div>
+        <div class="card-body">
+          <h3>Ga Ran Gion</h3>
+          <p class="price">60.000d</p>
+          <span class="category-tag fast">Mon nhanh</span>
+          <button class="btn btn-detail">Xem mon</button>
+        </div>
+      </div>
+
+      <div class="food-card" data-category="fast" data-name="Burger Dac Biet" data-price="65.000d" data-desc="Burger thit bo Angus voi pho mai, rau xa lach, ca chua va sot dac biet cua nha hang.">
+        <div class="card-img">
+          <img src="img/burger.JPG" alt="Burger" />
+          <span class="badge badge-new">Moi</span>
+        </div>
+        <div class="card-body">
+          <h3>Burger Dac Biet</h3>
+          <p class="price">65.000d</p>
+          <span class="category-tag fast">Mon nhanh</span>
+          <button class="btn btn-detail">Xem mon</button>
+        </div>
+      </div>
+
+    </div>
+    <p class="no-result" id="noResult" style="display:none;">Khong tim thay mon an phu hop.</p>
+  </section>
+
+  <!-- VE CHUNG TOI -->
+  
+
+  <!-- FORM LIEN HE -->
+  <section id="contact" class="contact-section">
+    <h2 class="section-title">LIEN HE DAT MON</h2>
+    <div class="contact-wrapper">
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="fullname">Ho va ten <span>*</span></label>
+          <input type="text" id="fullname" name="fullname" placeholder="Nhap ho va ten..." />
+          <span class="error-msg" id="err-fullname"></span>
+        </div>
+        <div class="form-group">
+          <label for="phone">So dien thoai <span>*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="Nhap so dien thoai..." />
+          <span class="error-msg" id="err-phone"></span>
+        </div>
+        <div class="form-group">
+          <label for="dish">Mon muon hoi <span>*</span></label>
+          <input type="text" id="dish" name="dish" placeholder="Vi du: Pho Bo, Com Tam..." />
+          <span class="error-msg" id="err-dish"></span>
+        </div>
+        <div class="form-group">
+          <label for="message">Ghi chu them</label>
+          <textarea id="message" name="message" rows="4" placeholder="Ghi chu ve yeu cau..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-submit">Gui lien he</button>
+      </form>
+      <div class="contact-info">
+        <h3>Thong tin lien he</h3>
+        <ul>
+          <li>Dia chi: 123 Duong Am Thuc, Q.1, TP.HCM</li>
+          <li>Hotline: 0909 123 456</li>
+          <li>Gio mo cua: 06:00 - 22:00 (moi ngay)</li>
+          <li>Email: foodhouse@gmail.com</li>
         </ul>
-      </section>
-
-      <section class="container section" aria-labelledby="hoi-dap">
-        <div class="section__head">
-          <h2 id="hoi-dap">Câu hỏi thường gặp</h2>
-        </div>
-        <div class="faq">
-          <details class="faq__item">
-            <summary>Ai được đăng ký thành viên EduHub?</summary>
-            <p>Tất cả sinh viên đang học tại Trường Đại học Đồng Tháp, chỉ cần mã số sinh viên và email.</p>
-          </details>
-          <details class="faq__item">
-            <summary>Tham gia sự kiện có mất phí không?</summary>
-            <p>Phần lớn sự kiện miễn phí. Sự kiện có phí sẽ ghi rõ ở trang chi tiết.</p>
-          </details>
-          <details class="faq__item">
-            <summary>Một sinh viên được tham gia mấy câu lạc bộ?</summary>
-            <p>Không giới hạn, nhưng nên chọn tối đa hai CLB để có thời gian sinh hoạt đều đặn.</p>
-          </details>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container site-footer__inner">
-        <p>EduHub Web · Trường Đại học Đồng Tháp · 783 Phạm Hữu Lầu, Cao Lãnh, Đồng Tháp</p>
-        <p>Liên hệ: <a href="mailto:eduhub@dthu.edu.vn">eduhub@dthu.edu.vn</a></p>
-        <p><small>Bài thực hành môn IN4529 — Lập trình Front End.</small></p>
       </div>
-    </footer>
-  </body>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo">&#127964; <span>FOOD HOUSE</span></div>
+        <p>Huong vi tuyet voi - Moi ngay deu dac biet</p>
+      </div>
+      <div class="footer-links">
+        <h4>Dieu huong</h4>
+        <ul>
+          <li><a href="#home">Trang chu</a></li>
+          <li><a href="#menu">Mon an</a></li>
+          <li><a href="#about">Gioi thieu</a></li>
+          <li><a href="#contact">Lien he</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Lien he nhanh</h4>
+        <p>Dia chi: 123 Duong Am Thuc, Q.1, TP.HCM</p>
+        <p>Hotline: 0909 123 456</p>
+        <p>Facebook: facebook.com/foodhouse</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2026 FOOD HOUSE - All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose">X</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
 </html>
